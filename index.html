@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Photo Page</title>
+  <meta name="description" content="A minimal one-page photo gallery with EXIF details.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=SUSE:wght@300..800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="page-shell">
+    <header class="page-header">
+      <h1 class="brand">ROBIN MALMQUIST</h1>
+      <nav class="header-actions" aria-label="Site information">
+        <button class="action-btn" type="button" data-open-modal="about-modal">About</button>
+        <button class="action-btn" type="button" data-open-modal="contact-modal">Contact</button>
+      </nav>
+    </header>
+
+    <section id="tag-filter-wrap" class="tag-filter-wrap" aria-label="Tag filters" hidden>
+      <div id="tag-filter-chips" class="tag-filter-chips" role="toolbar" aria-label="Photo tag filters"></div>
+    </section>
+
+    <section aria-label="Photo gallery">
+      <div id="gallery" class="gallery-grid"></div>
+      <div id="gallery-sentinel" class="gallery-sentinel" aria-hidden="true" hidden></div>
+      <p id="gallery-status" class="gallery-status" role="status" aria-live="polite">Loading photos...</p>
+    </section>
+  </main>
+
+  <div class="modal" id="about-modal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="about-title">
+    <div class="modal-backdrop" data-close-modal></div>
+    <div class="modal-card">
+      <button type="button" class="close-btn" data-close-modal aria-label="Close about dialog">&times;</button>
+      <h2 id="about-title">About</h2>
+      <p>
+        Add your personal intro here. This space is intended for a short artist bio, photography focus,
+        and what visitors should know about your work.
+      </p>
+    </div>
+  </div>
+
+  <div class="modal" id="contact-modal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="contact-title">
+    <div class="modal-backdrop" data-close-modal></div>
+    <div class="modal-card">
+      <button type="button" class="close-btn" data-close-modal aria-label="Close contact dialog">&times;</button>
+      <h2 id="contact-title">Contact</h2>
+      <p>Email: yourname@example.com</p>
+      <p>Instagram: @yourhandle</p>
+    </div>
+  </div>
+
+  <div class="modal" id="photo-modal" aria-hidden="true" role="dialog" aria-modal="true" aria-label="Photo">
+    <div class="modal-backdrop" data-close-modal></div>
+    <div class="modal-card photo-modal-card">
+      <div class="photo-frame">
+        <button type="button" class="close-btn photo-close-btn" data-close-modal aria-label="Close photo dialog">&times;</button>
+        <img id="photo-modal-image" class="photo-modal-image" alt="">
+      </div>
+      <div class="exif-title-row" aria-label="EXIF title">
+        <span id="exif-title">-</span>
+      </div>
+      <div class="exif-summary" aria-label="EXIF values">
+        <span id="exif-shutter">-</span>
+        <span class="exif-sep" aria-hidden="true">•</span>
+        <span id="exif-aperture">-</span>
+        <span class="exif-sep" aria-hidden="true">•</span>
+        <span id="exif-iso">-</span>
+        <span class="exif-sep" aria-hidden="true">•</span>
+        <span id="exif-focal">-</span>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/exifr/dist/full.umd.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
